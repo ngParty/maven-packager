@@ -1,0 +1,34 @@
+{
+  "name": "maven-packager",
+  "version": "1.0.0",
+  "description": "Create static assets maven package",
+  "main": "index.js",
+  "bin": {
+    "maven-packager": "bin/maven-packager"
+  },
+  "scripts": {
+    "start": "bin/maven-packager",
+    "test": "mkdir -p dist && touch dist/index.js && bin/maven-packager && ls package/maven-packager.zip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngparty/maven-packager.git"
+  },
+  "keywords": [
+    "mvn",
+    "maven",
+    "packager"
+  ],
+  "author": "Mario Vejlupek <mario@vejlupek.cz>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngparty/maven-packager/issues"
+  },
+  "homepage": "https://github.com/ngparty/maven-packager#readme",
+  "dependencies": {
+    "archiver": "0.16.0",
+    "rimraf": "^2.4.3",
+    "yargs": "3.29.0"
+  },
+  "devDependencies": {}
+}

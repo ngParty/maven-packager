@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+const mavenPackager = require( '../' )
+
+const exampleText = 'maven-packager --dist ./dist'
+const exampleWillDoText = 'Will create package from ./dist content using ./pom.template.xml file'
+
+const argv = require( 'yargs' )
+    .usage( 'Usage: $0 [options]' )
+    .option( 'dist', {
+      alias: 'd',
+      describe: 'dist folder',
+      default: 'dist',
+      type: 'string'
+    })
+    .option( 'template', {
+      alias: 't',
+      describe: 'template file with ARTIFACTID and VERSION keys',
+      default: 'pom.template.xml',
+      type: 'string'
+    })
+    .example( exampleText, exampleWillDoText )
+    .help( 'help' )
+    .alias( 'help', 'h' )
+    .argv
+
+process.title = 'maven-packager'
+
+mavenPackager.createPackage( argv, () => process.exit( 0 ) )
