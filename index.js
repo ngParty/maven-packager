@@ -11,7 +11,7 @@ const projectPackageFile = path.resolve( cwd, 'package.json' )
 const projectPackageConfig = require( projectPackageFile )
 
 // Remove any npm scope from package name
-const projectPackageSafeName = projectPackageConfig.name.split( '/' )[ 1 ]
+const projectPackageSafeName = projectPackageConfig.name.split( '/' ).slice( -1 )
 
 const packageOutputDir = path.resolve( cwd, 'package' )
 const packageOutputFileName = path.resolve(
