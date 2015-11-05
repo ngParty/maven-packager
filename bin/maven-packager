@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const mavenPackager = require( '../' )
+var mavenPackager = require( '../' )
 
-const exampleText = 'maven-packager --dist ./dist'
-const exampleWillDoText = 'Will create package from ./dist content using ./pom.template.xml file'
+var exampleText = 'maven-packager --dist ./dist'
+var exampleWillDoText = 'Will create package from ./dist content using ./pom.template.xml file'
 
-const argv = require( 'yargs' )
+var argv = require( 'yargs' )
     .usage( 'Usage: $0 [options]' )
     .option( 'dist', {
       alias: 'd',
@@ -26,4 +26,4 @@ const argv = require( 'yargs' )
 
 process.title = 'maven-packager'
 
-mavenPackager.createPackage( argv, () => process.exit( 0 ) )
+mavenPackager.createPackage( argv, function(){ return process.exit( 0 ); } )
