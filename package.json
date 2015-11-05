@@ -7,7 +7,10 @@
     "maven-packager": "bin/maven-packager"
   },
   "scripts": {
+    "prepublish": "tsc",
+    "postinstall": "typings install --name maven-packager",
     "start": "bin/maven-packager",
+    "pretest": "tsc",
     "test": "mkdir -p dist && touch dist/index.js && bin/maven-packager && ls package/maven-packager.zip"
   },
   "repository": {
@@ -27,8 +30,11 @@
   "homepage": "https://github.com/ngparty/maven-packager#readme",
   "dependencies": {
     "archiver": "0.16.0",
-    "rimraf": "^2.4.3",
+    "rimraf": "2.4.3",
     "yargs": "3.29.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "typescript": "1.6.2",
+    "typings": "0.0.12"
+  }
 }
