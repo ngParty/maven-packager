@@ -4,20 +4,20 @@ var fs = require( 'fs' )
 var archiver = require( 'archiver' )
 var rimraf = require( 'rimraf' )
 
-const path = require( 'path' )
+var path = require( 'path' )
 
-const cwd = process.cwd()
-const projectPackageFile = path.resolve( cwd, 'package.json' )
-const projectPackageConfig = require( projectPackageFile )
+var cwd = process.cwd()
+var projectPackageFile = path.resolve( cwd, 'package.json' )
+var projectPackageConfig = require( projectPackageFile )
 
 // Remove any npm scope from package name
-const projectPackageSafeName = projectPackageConfig.name.split( '/' ).slice( -1 )
+var projectPackageSafeName = projectPackageConfig.name.split( '/' ).slice( -1 )
 
-const packageOutputDir = path.resolve( cwd, 'package' )
-const packageOutputFileName = path.resolve(
+var packageOutputDir = path.resolve( cwd, 'package' )
+var packageOutputFileName = path.resolve(
   packageOutputDir, `${projectPackageSafeName}.zip`
 )
-const packagePOMFileName = path.resolve(
+var packagePOMFileName = path.resolve(
   packageOutputDir,
   'pom.xml'
 )
@@ -35,12 +35,12 @@ module.exports = {
  */
 function createPom( options ) {
 
-  const templateString = fs.readFileSync(
+  var templateString = fs.readFileSync(
     options.template,
     { encoding: 'utf8' }
   )
 
-  const tranformedTemplate = templateString.replace(
+  var tranformedTemplate = templateString.replace(
     'ARTIFACTID',
     projectPackageSafeName
   ).replace(
@@ -63,7 +63,7 @@ function createZip( options, callback ) {
   var outputFile = fs.createWriteStream( packageOutputFileName )
 
   // Return on stream close
-  outputFile.on( 'close', () => callback( options ) )
+  outputFile.on( 'close', function() { callback( options ) } )
 
   // Create archiver
   var archive = archiver( 'zip', {
