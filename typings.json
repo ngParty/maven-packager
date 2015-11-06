@@ -1,0 +1,8 @@
+{
+  "name": "maven-packager",
+  "dependencies": {},
+  "devDependencies": {},
+  "ambientDependencies": {
+    "node": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/master/node/node.d.ts"
+  }
+}
